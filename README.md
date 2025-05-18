@@ -1,4 +1,4 @@
-# Stellar Element Voyage
+# Periodic Table
 
 A modern, interactive periodic table web application built with React and TypeScript.
 
@@ -40,3 +40,5 @@ npm run build
 ## License
 
 MIT
+
+![App Screenshot](./ascreenshot.png)
