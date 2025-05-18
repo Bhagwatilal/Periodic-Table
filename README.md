@@ -41,4 +41,4 @@ npm run build
 
 MIT
 
-![App Screenshot](./ascreenshot.png)
+![App Screenshot](./screenshot.png)
