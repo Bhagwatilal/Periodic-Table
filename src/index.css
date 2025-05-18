@@ -1,0 +1,231 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 98%;
+    --foreground: 240 10% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+
+    --primary: 252 100% 67%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 90%;
+    --secondary-foreground: 240 10% 10%;
+
+    --muted: 240 5% 90%;
+    --muted-foreground: 240 10% 40%;
+
+    --accent: 252 100% 67%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 10% 85%;
+    --input: 240 10% 85%;
+    --ring: 252 100% 67%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 7%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 10% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 10% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 252 100% 67%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 20%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 240 5% 20%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 252 100% 67%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 5% 20%;
+    --input: 240 5% 20%;
+    --ring: 252 100% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .element-card {
+    @apply relative transition-all duration-300 transform-gpu;
+  }
+
+  .element-grid {
+    display: grid;
+    grid-template-columns: repeat(18, minmax(70px, 1fr));
+    gap: 6px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1400px) {
+    .element-grid {
+      grid-template-columns: repeat(18, minmax(60px, 1fr));
+      gap: 4px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .element-grid {
+      grid-template-columns: repeat(18, minmax(50px, 1fr));
+      gap: 2px;
+    }
+  }
+
+  /* 3D Card Styles */
+  .parent {
+    perspective: 1000px;
+  }
+
+  .card {
+    height: 100%;
+    border-radius: 12px;
+    transition: all 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    box-shadow: rgba(5, 71, 17, 0) 40px 50px 25px -40px, rgba(5, 71, 17, 0.2) 0px 25px 25px -5px;
+  }
+
+  .glass {
+    transform-style: preserve-3d;
+    position: absolute;
+    inset: 4px;
+    border-radius: 10px;
+    border-top-right-radius: 70%;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 100%);
+    transform: translate3d(0px, 0px, 10px);
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .logo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-style: preserve-3d;
+  }
+
+  .circle {
+    display: block;
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    box-shadow: rgba(100, 100, 111, 0.2) -10px 10px 20px 0px;
+    backdrop-filter: blur(5px);
+    background: rgba(0, 249, 203, 0.2);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .parent:hover .card {
+    transform: rotate3d(1, 1, 0, 30deg);
+    box-shadow: rgba(5, 71, 17, 0.3) 30px 50px 25px -40px, rgba(5, 71, 17, 0.1) 0px 25px 30px 0px;
+  }
+
+  /* Space Mode Animations */
+  .space-mode-element {
+    @apply absolute transition-all duration-500;
+  }
+
+  .glass-card {
+    @apply bg-white/15 backdrop-blur-lg border rounded-lg shadow-lg dark:bg-black/30;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* Theme transition */
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) translateX(-50%);
+  }
+  50% { 
+    transform: translateY(-20px) translateX(-50%);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { 
+    opacity: 1; 
+  }
+  50% { 
+    opacity: 0.7; 
+  }
+}
+
+@keyframes rotate-3d {
+  0% { 
+    transform: rotateX(0deg) rotateY(0deg) rotate3d(1, 1, 0, 30deg); 
+  }
+  50% { 
+    transform: rotateX(5deg) rotateY(10deg) rotate3d(1, 1, 0, 35deg); 
+  }
+  100% { 
+    transform: rotateX(0deg) rotateY(0deg) rotate3d(1, 1, 0, 30deg); 
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-rotate-3d {
+  animation: rotate-3d 5s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
