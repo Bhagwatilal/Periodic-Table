@@ -40,3 +40,5 @@ npm run build
 ## License
 
 MIT
+
+![App Screenshot](./ascreenshot.png)
